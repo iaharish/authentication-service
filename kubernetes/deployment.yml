@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+  labels:
+    app: auth-service
+spec:
+  replicas: 3  # Number of pods to run
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+      - name: auth-cntr
+        image: nagaprudhvik/auth-img:latest  # Replace with your image name
+        ports:
+        - containerPort: 8090  # Port your Spring Boot app listens on
